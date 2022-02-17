@@ -14,18 +14,13 @@ namespace AlgosAndTools
 
             foreach (var idxTuple in operations)
             {
-                List<int> segment = new();
-
                 int startIdx = idxTuple[0];
                 int endIdx = ++idxTuple[1]; // ++ so that, we can grab values at both indices
+                List<int> segment = new();
 
-                Range r0 = ..startIdx;
-                Range r1 = startIdx..endIdx;
-                Range r2 = endIdx..;
-
-                var slicePre = arr.ToArray()[r0];
-                var sliceMidReversed = arr.ToArray()[r1].Reverse();
-                var slicePost = arr.ToArray()[r2];
+                var slicePre = arr.ToArray()[..startIdx];
+                var sliceMidReversed = arr.ToArray()[startIdx..endIdx].Reverse();
+                var slicePost = arr.ToArray()[endIdx..];
 
                 segment.AddRange(slicePre);
                 segment.AddRange(sliceMidReversed);
